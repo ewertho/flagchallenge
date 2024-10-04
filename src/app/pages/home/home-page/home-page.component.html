@@ -1,0 +1,32 @@
+<div class="container mx-auto">
+  <!-- Search bar e filtro por região -->
+  <div
+    class="flex flex-col md:flex-row px-6 justify-between space-y-8 md:space-y-0 mt-6"
+  >
+    <app-search
+      class="sm:w-1/4 elements"
+      [(searchQuery)]="searchQuery"
+      (searchEvent)="onSearch($event)"
+      (regionChange)="onRegionChange('$event')"
+    >
+    </app-search>
+    <app-region-filter
+      class="elements"
+      (regionChange)="onRegionChange($event)"
+    ></app-region-filter>
+  </div>
+
+  <!-- Lista de países -->
+  <div class="flex flex-wrap mt-4">
+    <div
+      *ngFor="let country of filteredCountries"
+      class="w-full sm:w-1/2 md:w-1/4 p-4"
+    >
+      <!-- Mudança na largura para garantir que a coluna se ajuste -->
+      <app-country-card
+        [country]="country"
+        (click)="goToCountryDetail(country.cca3)"
+      ></app-country-card>
+    </div>
+  </div>
+</div>
