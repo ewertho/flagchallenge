@@ -1,0 +1,11 @@
+<header class="header-container shadow-xl">
+  <p class="text-sm">
+    <strong>{{ title }}</strong>
+  </p>
+  <div class="flex items-end space-x-2">
+    <fa-icon [icon]="faMoon"></fa-icon>
+    <button (click)="toggleTheme()" class="theme-button">
+      <p class="text-sm">{{ isDarkTheme ? "Light Mode" : "Dark Mode" }}</p>
+    </button>
+  </div>
+</header>
