@@ -1,0 +1,11 @@
+<div class="region-filter rounded-lg shadow-xl">
+  <select
+    class="region-filter elements w-full p-4 focus:outline-none"
+    (change)="onRegionSelect($event)"
+  >
+    <option value="All">Filter by Region</option>
+    <option class="border-none" *ngFor="let region of regions" [value]="region">
+      {{ region }}
+    </option>
+  </select>
+</div>
