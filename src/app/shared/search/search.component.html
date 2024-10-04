@@ -1,0 +1,10 @@
+<div class="search-bar flex shadow-xl">
+  <fa-icon class="self-center pl-4 elements" [icon]="faSearch"></fa-icon>
+  <input
+    class="elements p-4 w-full rounded-sm focus:outline-none"
+    type="text"
+    placeholder="Search for a country..."
+    [(ngModel)]="searchQuery"
+    (input)="onSearch()"
+  />
+</div>
