@@ -1,0 +1,71 @@
+<div class="container w-full px-12 mt-5 mb-8">
+  <div class="my-4 md:my-9">
+    <app-back></app-back>
+  </div>
+  <div *ngIf="country" class="country-detail">
+    <div class="flex flex-col md:flex-row md:space-x-8">
+      <div class="md:w-1/2">
+        <img
+          [src]="country.flags.svg"
+          alt="{{ country.name.common }}"
+          class="w-full md:h-96 object-cover rounded-lg"
+        />
+      </div>
+      <div class="flex flex-col justify-between">
+        <div class="md:grid md:grid-cols-2 md:pl-6">
+          <div>
+            <h2 class="mt-6 mb-8 md:mt-2 text-4xl">
+              {{ country.name.common }}
+            </h2>
+            <ul class="list-none p-0 mt-2 space-y-2">
+              <li class="mb-2">
+                <strong>Native Name:</strong> {{ country.name.official }}
+              </li>
+              <li class="mb-2">
+                <strong>Population:</strong> {{ country.population | number }}
+              </li>
+              <li class="mb-2">
+                <strong>Região:</strong> {{ country.region }}
+              </li>
+              <li class="mb-2">
+                <strong>Region:</strong> {{ country.subregion }}
+              </li>
+              <li class="mb-2">
+                <strong>Capital:</strong> {{ country.capital[0] }}
+              </li>
+            </ul>
+          </div>
+          <div class="self-center mt-8 space-y-2">
+            <ul>
+              <li class="mb-2">
+                <strong>Top Level Domain: </strong>{{ country.tld }}
+              </li>
+              <li class="mb-2">
+                <strong>Currencies: </strong>{{ getCurrencyName() }}
+              </li>
+              <li class="mb-2">
+                <strong>Languages: </strong>{{ getLanguages() }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          *ngIf="borderCountries.length > 0"
+          class="flex flex-col mt-8 md:flex-row md:pl-6"
+        >
+          <h3 class="text-lg mr-2"><strong>Border Countries: </strong></h3>
+          <ul class="flex flex-wrap mt-4 md:mt-0">
+            <li *ngFor="let border of borderCountries" class="mr-2">
+              <button
+                class="py-1 my-2 px-3 mx-2 rounded elements shadow-xl"
+                (click)="navigateToCountry(border.cca3)"
+              >
+                {{ border.name.common }}
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
